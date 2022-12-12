@@ -1,0 +1,53 @@
+find:
+  online: '[JSON] ["",{"text":"%player% ","color":"yellow"},{"text":"is online on ","color":"green"},{"text":"%server%","color":"yellow","clickEvent":{"action":"run_command","value":"/join %player%"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"Join the server"}]}}},{"text":". Click to join.","color":"green"}]'
+  offline: '&e%player% &cwas last seen &e%time% &cago on &e%server%&c.'
+  not-found: '&c%player% is not online.'
+  denied: '&cThat player can not be tracked.'
+  self: '&cYou cannot find yourself! You are right here!'
+
+alert:
+  alert: '&c%message%'
+
+list:
+  total: '&7Total players online &e%count%&7.'
+  server: '&7There are &e%count% &7players on &e%server%&7.'
+  staff: '&7Staff online: '
+  staffmember: '[JSON] ["",{"text":"%player%","color":"red","clickEvent":{"action":"run_command","value":"/join %player%"},"hoverEvent":{"action":"show_text","value":["",{"text":"Click here to join "},{"text":"%player%","color":"yellow"},{"text":" on "},{"text":"%server%","color":"yellow"}]}},{"text":" ","clickEvent":{"action":"run_command","value":"/join %player%"},"hoverEvent":{"action":"show_text","value":["",{"text":"Click here to join "},{"text":"%player%","color":"yellow"},{"text":" on "},{"text":"%server%","color":"yellow"}]}},{"text":"(%server%)","color":"yellow","clickEvent":{"action":"run_command","value":"/join %player%"},"hoverEvent":{"action":"show_text","value":["",{"text":"Click here to join "},{"text":"%player%","color":"yellow"},{"text":" on "},{"text":"%server%","color":"yellow"}]}},{"text":", ","color":"gray","hoverEvent":{"action":"show_text","value":["",{"text":"Click here to join "},{"text":"%player%","color":"yellow"},{"text":" on "},{"text":"%server%","color":"yellow"}]}}]'
+  nostaff: '&cNo staff currently online.'
+  online: '&7Players: &f%players%'
+
+join:
+  lookup: "&7Trying to join &e%player%'s &7server..."
+  join: '&7You joined &e%player% &7on &e%server%&7.'
+  self: '&cYou cannot join yourself! You are here already!'
+  denied: '&cThat player can not be joined.'
+  not-found: '&cThis player is not online.'
+  errors:
+    error: '&cUnable to join &e%server%'
+    offline: '&cThis server is offline!'
+    whitelist: '&cYou are not whitelisted on this server!'
+    restarting: '&cThis server is restarting!'
+    same-server: "&cYou're already on the same server!"
+    unknown: '&rUnknown reason.'
+
+restart:
+  rescheduled: '&aRescheduled autorestart'
+  time: '&7The next restart is in &c%time%&7.'
+  notify:
+    chat: '&cScheduled server restart in %minutes% minute%s%'
+    title: '&cScheduled restart in'
+    sub-title: '&c%minutes% minute%s%'
+  countdown:
+    chat: '&cScheduled server restart in %seconds%'
+    title: '&cScheduled restart in'
+    sub-title: '&c%seconds%'
+
+whereami:
+  whereami: '&aYou are connected to &e%server%&a.'
+
+dispatch:
+  dispatch: '&aDispatched to: &r%servers%'
+
+
+ping:
+  ping: '&aYou have &e%ping%&a ping to the server.'

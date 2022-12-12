@@ -1,0 +1,12 @@
+# Project exclude paths
+/.gradle/
+*/build/
+/mercury-bukkit/build/
+/mercury-common/build/
+/mercury-common/build/classes/java/main/
+/mercury-velocity/build/
+/mercury-velocity/build/classes/java/main/
+/.idea/
+/gradle/
+/output/
+/build/

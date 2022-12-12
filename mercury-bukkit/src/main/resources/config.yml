@@ -1,0 +1,67 @@
+groups:
+  lobby:
+    aliases:
+      - hub
+    servers:
+      - lobby1
+      - lobby2
+  smp:
+    aliases: []
+    servers:
+      - survival
+      - skyblock
+
+
+auto-restart:
+  scheduler:
+    enabled: true
+    interval: 12h
+    #Randomize will randomly remove or add the given time from the set interval
+    randomize: 1h
+  reminder:
+    #Enable reminder chat & title messages
+    chat: true
+    title: true
+    #The amount of minutes left, to display a chat & title message
+    minutes:
+      - 15
+      - 10
+      - 5
+      - 1
+    #The final countdown in seconds - message in chat & title every second
+    seconds: 10
+  #On 0 seconds, first redirect all players to the hubs - deny joining - then stop
+  redirectall:
+    group: lobby
+    #The amount of time the server waits for all players to leave
+    timeout: 10000s
+  redirect-back: true
+  commands:
+    #Time before final shutdown to run the commands
+    time: 5s
+    commands:
+      - save-all
+
+dispatch:
+  enabled: true
+  players:
+    - Asecta
+  blacklist:
+    - exampleserver
+
+scheduled-messages:
+  enabled: false
+  scheduler:
+    #Minimum delay between messages
+    delay: 90s
+    #Minimum amount of messages in the chat, before actually sending the next message
+    messages: 10
+    #Max time before force sending the message, even if minimum messages is not reached
+    messages-timeout: 240s
+  messages:
+    - messages:
+        - '[JSON] [“Hey %player%, why are you still in the hub? Select your server..”]'
+      group: hubs
+    - messages:
+        - 'Global message in all servers that is global on every server'
+      group: "*"

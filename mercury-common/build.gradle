@@ -1,0 +1,4 @@
+dependencies {
+    implementation group: 'com.hazelcast', name: 'hazelcast', version: '5.0.2'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+}

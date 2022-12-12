@@ -1,0 +1,4 @@
+rootProject.name = 'ProjectMercury'
+include 'mercury-common'
+include 'mercury-bukkit'
+include 'mercury-velocity'

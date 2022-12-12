@@ -1,0 +1,78 @@
+apply plugin: 'java'
+
+group 'com.pandoaspen.mercury'
+
+jar {
+    enabled = false
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+}
+
+def outputDirs = [
+        "default": [
+                "${project.rootDir}/output"
+        ]
+]
+
+subprojects {
+    apply plugin: 'java'
+
+    project.setVersion("1.0")
+
+    jar {
+        duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+
+        from {
+            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.2'
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.2'
+
+        compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+
+        compileOnly group: 'com.hazelcast', name: 'hazelcast', version: '5.0.2'
+        compileOnly group: 'com.google.code.gson', name: 'gson', version: '2.9.1'
+        compileOnly group: 'org.yaml', name: 'snakeyaml', version: '1.30'
+    }
+
+    gradle.buildFinished {
+        if (!outputDirs.containsKey(project.name)) return
+
+        var outDirs = new ArrayList(outputDirs.get("default"))
+        outDirs.addAll(outputDirs.getOrDefault(project.name, []))
+
+        for (outDir in outDirs) {
+            copy {
+                from jar
+                into outDir
+            }
+            println("Copying " + jar + " to " + outDir)
+        }
+    }
+
+}
+
+
+tasks.register('packageDistribution', Zip) {
+    archiveFileName.set("mercury.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("${project.rootDir}/output"))
+    from(layout.files(
+            "${project.rootDir}/output/mercury-bukkit-1.0.jar",
+            "${project.rootDir}/output/mercury-velocity-1.0.jar",
+    ))
+}

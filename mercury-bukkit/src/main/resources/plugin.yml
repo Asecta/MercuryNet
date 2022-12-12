@@ -1,0 +1,9 @@
+name: Mercury
+version: 1.0
+main: com.pandoaspen.mercury.bukkit.MercuryBukkitPlugin
+softdepend:
+  - PlaceholderAPI
+  #load: STARTUP
+# api-version: 1.8
+commands:
+  restart:
